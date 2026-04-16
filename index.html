@@ -1,732 +1,408 @@
 
 <style>
   @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap');
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --cream: #FAF8F4;
-    --warm: #F2EDE3;
-    --gold: #C8923A;
-    --gold-light: #F0D9B5;
-    --ink: #1A1512;
-    --ink-mid: #4A3F35;
-    --ink-light: #8C7B6E;
-    --rust: #B85C38;
-    --sage: #5C7A5A;
-    --accent-bg: #FFF9F0;
-    --border: rgba(180,150,110,0.18);
+  *{box-sizing:border-box;margin:0;padding:0;}
+  :root{
+    --cream:#FAF8F4;--warm:#F2EDE3;--gold:#C8923A;--gold-light:#F0D9B5;
+    --ink:#1A1512;--ink-mid:#4A3F35;--ink-light:#8C7B6E;
+    --rust:#B85C38;--sage:#5C7A5A;--accent-bg:#FFF9F0;
+    --border:rgba(180,150,110,0.18);
   }
-
-  .pf-root {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    color: var(--ink);
-    max-width: 900px;
-    margin: 0 auto;
-  }
+  .pf{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);max-width:900px;margin:0 auto;}
 
   /* HERO */
-  .hero {
-    padding: 64px 48px 48px;
-    border-bottom: 1px solid var(--border);
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 40px;
-    align-items: end;
-    background: var(--cream);
-  }
-  .hero-eyebrow {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 18px;
-  }
-  .hero-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--gold);
-  }
-  .hero-eyebrow span {
-    font-size: 12px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-weight: 500;
-  }
-  .hero-name {
-    font-family: 'DM Serif Display', serif;
-    font-size: 58px;
-    line-height: 1.05;
-    color: var(--ink);
-    margin-bottom: 16px;
-    letter-spacing: -0.5px;
-  }
-  .hero-tagline {
-    font-size: 16px;
-    color: var(--ink-mid);
-    line-height: 1.7;
-    max-width: 520px;
-    font-weight: 300;
-    margin-bottom: 28px;
-  }
-  .hero-tags {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-  .hero-tag {
-    padding: 6px 14px;
-    border: 1px solid var(--border);
-    border-radius: 100px;
-    font-size: 13px;
-    color: var(--ink-mid);
-    background: white;
-    font-weight: 400;
-  }
-  .hero-stats {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    align-items: flex-end;
-  }
-  .stat {
-    text-align: right;
-  }
-  .stat-num {
-    font-family: 'DM Serif Display', serif;
-    font-size: 36px;
-    color: var(--ink);
-    line-height: 1;
-  }
-  .stat-label {
-    font-size: 11px;
-    color: var(--ink-light);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    margin-top: 4px;
-  }
-  .stat-divider {
-    width: 1px;
-    height: 40px;
-    background: var(--border);
-    margin-left: auto;
-    display: none;
-  }
+  .hero{padding:60px 48px 48px;border-bottom:1px solid var(--border);display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end;}
+  .eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+  .eyebrow-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);}
+  .eyebrow span{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:500;}
+  .hero-name{font-family:'DM Serif Display',serif;font-size:56px;line-height:1.05;color:var(--ink);margin-bottom:16px;letter-spacing:-.5px;}
+  .hero-tag-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;}
+  .role-pill{padding:5px 14px;border-radius:100px;font-size:13px;font-weight:500;}
+  .role-gd{background:#FFF0E8;color:var(--rust);border:1px solid #F5D0BC;}
+  .role-wd{background:#EAF5EF;color:var(--sage);border:1px solid #C0DCBE;}
+  .hero-tagline{font-size:15px;color:var(--ink-mid);line-height:1.75;font-weight:300;margin-top:14px;max-width:500px;}
+  .hero-stats{display:flex;flex-direction:column;gap:22px;align-items:flex-end;}
+  .stat-num{font-family:'DM Serif Display',serif;font-size:34px;color:var(--ink);line-height:1;}
+  .stat-label{font-size:10.5px;color:var(--ink-light);letter-spacing:.06em;text-transform:uppercase;margin-top:3px;text-align:right;}
 
-  /* SECTION WRAPPER */
-  .section {
-    padding: 52px 48px;
-    border-bottom: 1px solid var(--border);
-  }
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 36px;
-  }
-  .section-num {
-    font-size: 11px;
-    color: var(--gold);
-    font-weight: 500;
-    letter-spacing: 0.1em;
-  }
-  .section-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 26px;
-    color: var(--ink);
-    font-weight: 400;
-  }
-  .section-line {
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
+  /* SECTION */
+  .sec{padding:50px 48px;border-bottom:1px solid var(--border);}
+  .sec-hdr{display:flex;align-items:center;gap:14px;margin-bottom:36px;}
+  .sec-num{font-size:11px;color:var(--gold);font-weight:500;letter-spacing:.1em;}
+  .sec-title{font-family:'DM Serif Display',serif;font-size:26px;color:var(--ink);font-weight:400;}
+  .sec-line{flex:1;height:1px;background:var(--border);}
 
-  /* SKILLS GRID */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    overflow: hidden;
-  }
-  .skill-cell {
-    background: white;
-    padding: 22px 24px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-  .skill-icon {
-    width: 38px;
-    height: 38px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  .skill-icon svg {
-    width: 20px;
-    height: 20px;
-  }
-  .skill-name {
-    font-size: 13.5px;
-    font-weight: 500;
-    color: var(--ink);
-    line-height: 1.3;
-  }
-  .skill-sub {
-    font-size: 11px;
-    color: var(--ink-light);
-    margin-top: 2px;
-  }
+  /* TOOLS GRID */
+  .tools-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;}
+  .tool-card{background:white;border:1px solid var(--border);border-radius:14px;padding:18px 14px;display:flex;flex-direction:column;align-items:center;gap:10px;transition:border-color .2s;}
+  .tool-card:hover{border-color:var(--gold-light);}
+  .tool-logo{width:48px;height:48px;border-radius:11px;display:flex;align-items:center;justify-content:center;}
+  .tool-name{font-size:12px;font-weight:500;color:var(--ink);text-align:center;}
+  .tool-sub{font-size:10.5px;color:var(--ink-light);text-align:center;line-height:1.4;}
 
-  /* EXPERIENCE */
-  .exp-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-  .exp-item {
-    display: grid;
-    grid-template-columns: 180px 1fr;
-    gap: 28px;
-    padding: 28px 0;
-    border-bottom: 1px solid var(--border);
-    position: relative;
-  }
-  .exp-item:last-child { border-bottom: none; }
-  .exp-meta {}
-  .exp-period {
-    font-size: 12px;
-    color: var(--ink-light);
-    letter-spacing: 0.04em;
-    margin-bottom: 6px;
-  }
-  .exp-company {
-    font-size: 13px;
-    color: var(--ink-mid);
-    font-weight: 500;
-  }
-  .exp-badge {
-    display: inline-block;
-    margin-top: 8px;
-    padding: 3px 8px;
-    background: var(--accent-bg);
-    border: 1px solid var(--gold-light);
-    border-radius: 4px;
-    font-size: 10.5px;
-    color: var(--gold);
-    font-weight: 500;
-  }
-  .exp-role {
-    font-family: 'DM Serif Display', serif;
-    font-size: 18px;
-    color: var(--ink);
-    margin-bottom: 10px;
-    font-weight: 400;
-  }
-  .exp-desc {
-    font-size: 13.5px;
-    color: var(--ink-mid);
-    line-height: 1.75;
-    font-weight: 300;
-  }
-  .exp-highlights {
-    margin-top: 12px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-  .exp-chip {
-    padding: 3px 10px;
-    background: var(--warm);
-    border-radius: 100px;
-    font-size: 11px;
-    color: var(--ink-mid);
-  }
+  /* WEB SKILLS */
+  .web-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px;}
+  .web-chip{background:var(--warm);border:1px solid var(--border);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:10px;}
+  .web-chip-icon{width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .web-chip-name{font-size:13px;font-weight:500;color:var(--ink);}
+  .web-chip-sub{font-size:11px;color:var(--ink-light);margin-top:1px;}
 
-  /* PROJECTS */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-  }
-  .project-card {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 28px;
-    transition: border-color 0.2s;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-  }
-  .project-card:hover { border-color: var(--gold-light); }
-  .project-accent {
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    border-radius: 16px 16px 0 0;
-  }
-  .project-type {
-    font-size: 10.5px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-light);
-    margin-bottom: 10px;
-    font-weight: 500;
-  }
-  .project-name {
-    font-family: 'DM Serif Display', serif;
-    font-size: 20px;
-    color: var(--ink);
-    margin-bottom: 10px;
-    font-weight: 400;
-  }
-  .project-desc {
-    font-size: 13px;
-    color: var(--ink-mid);
-    line-height: 1.7;
-    font-weight: 300;
-    margin-bottom: 16px;
-  }
-  .project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-  }
-  .project-tag {
-    padding: 3px 9px;
-    background: var(--warm);
-    border-radius: 100px;
-    font-size: 11px;
-    color: var(--ink-mid);
-  }
+  /* EXP */
+  .exp-item{display:grid;grid-template-columns:175px 1fr;gap:28px;padding:28px 0;border-bottom:1px solid var(--border);}
+  .exp-item:last-child{border-bottom:none;}
+  .exp-period{font-size:12px;color:var(--ink-light);letter-spacing:.04em;margin-bottom:5px;}
+  .exp-company{font-size:13px;color:var(--ink-mid);font-weight:500;}
+  .exp-badge{display:inline-block;margin-top:8px;padding:3px 8px;background:var(--accent-bg);border:1px solid var(--gold-light);border-radius:4px;font-size:10px;color:var(--gold);font-weight:500;}
+  .exp-role{font-family:'DM Serif Display',serif;font-size:18px;color:var(--ink);margin-bottom:9px;font-weight:400;}
+  .exp-desc{font-size:13.5px;color:var(--ink-mid);line-height:1.75;font-weight:300;}
+  .chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:11px;}
+  .chip{padding:3px 9px;background:var(--warm);border-radius:100px;font-size:11px;color:var(--ink-mid);}
 
   /* AWARDS */
-  .awards-row {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin-bottom: 24px;
-  }
-  .award-card {
-    background: linear-gradient(135deg, #FFF9F0 0%, #FAF4E8 100%);
-    border: 1px solid var(--gold-light);
-    border-radius: 16px;
-    padding: 24px;
-  }
-  .award-icon-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 12px;
-  }
-  .award-icon {
-    width: 36px; height: 36px;
-    border-radius: 10px;
-    background: var(--gold);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .award-icon svg { width: 18px; height: 18px; }
-  .award-title {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--ink);
-  }
-  .award-location {
-    font-size: 11px;
-    color: var(--ink-light);
-    margin-top: 1px;
-  }
-  .award-desc {
-    font-size: 12.5px;
-    color: var(--ink-mid);
-    line-height: 1.65;
-    font-weight: 300;
-  }
+  .awards-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  .award-card{background:linear-gradient(135deg,#FFF9F0,#FAF4E8);border:1px solid var(--gold-light);border-radius:16px;padding:24px;}
+  .award-top{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+  .award-icon{width:38px;height:38px;border-radius:10px;background:var(--gold);display:flex;align-items:center;justify-content:center;}
+  .award-title{font-size:14px;font-weight:500;color:var(--ink);}
+  .award-loc{font-size:11px;color:var(--ink-light);margin-top:2px;}
+  .award-desc{font-size:13px;color:var(--ink-mid);line-height:1.65;font-weight:300;}
+
+  /* PROJECTS */
+  .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  .proj-card{background:white;border:1px solid var(--border);border-radius:16px;overflow:hidden;cursor:pointer;transition:border-color .2s;}
+  .proj-card:hover{border-color:var(--gold-light);}
+  .proj-top{height:4px;}
+  .proj-body{padding:24px;}
+  .proj-meta{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+  .proj-type{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-light);font-weight:500;}
+  .ai-badge{padding:2px 7px;background:#EEF2FF;border:1px solid #C7D0F8;border-radius:4px;font-size:10px;color:#5A6FD6;font-weight:500;}
+  .proj-name{font-family:'DM Serif Display',serif;font-size:19px;color:var(--ink);margin-bottom:9px;font-weight:400;}
+  .proj-desc{font-size:13px;color:var(--ink-mid);line-height:1.7;font-weight:300;margin-bottom:14px;}
+  .proj-tags{display:flex;flex-wrap:wrap;gap:5px;}
+  .proj-tag{padding:3px 9px;background:var(--warm);border-radius:100px;font-size:11px;color:var(--ink-mid);}
 
   /* CONTACT */
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-  .contact-item {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 18px 22px;
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-  }
-  .contact-icon {
-    width: 36px; height: 36px;
-    border-radius: 9px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  .contact-icon svg { width: 18px; height: 18px; }
-  .contact-label {
-    font-size: 11px;
-    color: var(--ink-light);
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
-  }
-  .contact-value {
-    font-size: 13px;
-    color: var(--ink);
-    font-weight: 500;
-    margin-top: 2px;
-  }
+  .contact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+  .contact-item{display:flex;align-items:center;gap:14px;padding:18px 20px;background:white;border:1px solid var(--border);border-radius:12px;}
+  .c-icon{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .c-label{font-size:11px;color:var(--ink-light);text-transform:uppercase;letter-spacing:.07em;}
+  .c-value{font-size:13px;color:var(--ink);font-weight:500;margin-top:2px;}
 
   /* FOOTER */
-  .footer {
-    padding: 28px 48px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .footer-name {
-    font-family: 'DM Serif Display', serif;
-    font-size: 18px;
-    color: var(--ink);
-    font-style: italic;
-  }
-  .footer-copy {
-    font-size: 12px;
-    color: var(--ink-light);
-  }
+  .footer{padding:26px 48px;display:flex;align-items:center;justify-content:space-between;}
+  .footer-name{font-family:'DM Serif Display',serif;font-size:18px;color:var(--ink);font-style:italic;}
+  .footer-copy{font-size:12px;color:var(--ink-light);}
 </style>
 
-<div class="pf-root">
+<div class="pf">
 
-  <!-- HERO -->
-  <div class="hero">
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <div class="eyebrow"><div class="eyebrow-dot"></div><span>Open to opportunities · Gurugram</span></div>
+    <div class="hero-name">Vikram<br>Chauhan</div>
+    <div class="hero-tag-row">
+      <span class="role-pill role-gd">Graphic Designer</span>
+      <span class="role-pill role-wd">Web Developer</span>
+    </div>
+    <p class="hero-tagline">10+ years crafting premium visual identities, event branding, HTML emailers, and web experiences — from New Delhi boardrooms to Dubai award stages.</p>
+  </div>
+  <div class="hero-stats">
+    <div><div class="stat-num">10+</div><div class="stat-label">Years experience</div></div>
+    <div><div class="stat-num">3</div><div class="stat-label">Major award events</div></div>
+    <div><div class="stat-num">5</div><div class="stat-label">Companies</div></div>
+  </div>
+</div>
+
+<!-- TOOLS & SKILLS -->
+<div class="sec">
+  <div class="sec-hdr"><span class="sec-num">01</span><span class="sec-title">Design Tools</span><div class="sec-line"></div></div>
+
+  <div class="tools-grid">
+
+    <!-- Adobe Illustrator -->
+    <div class="tool-card">
+      <div class="tool-logo" style="background:#FF9A00;">
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+          <rect width="30" height="30" rx="6" fill="#FF9A00"/>
+          <text x="5" y="22" font-family="Arial Black,sans-serif" font-size="13" font-weight="900" fill="white">Ai</text>
+        </svg>
+      </div>
+      <div class="tool-name">Illustrator</div>
+      <div class="tool-sub">Logos & vectors</div>
+    </div>
+
+    <!-- Photoshop -->
+    <div class="tool-card">
+      <div class="tool-logo" style="background:#31A8FF;">
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+          <rect width="30" height="30" rx="6" fill="#001E36"/>
+          <text x="4" y="22" font-family="Arial Black,sans-serif" font-size="12" font-weight="900" fill="#31A8FF">Ps</text>
+        </svg>
+      </div>
+      <div class="tool-name">Photoshop</div>
+      <div class="tool-sub">Photo & composites</div>
+    </div>
+
+    <!-- InDesign -->
+    <div class="tool-card">
+      <div class="tool-logo">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <rect width="48" height="48" rx="10" fill="#49021F"/>
+          <text x="6" y="34" font-family="Arial Black,sans-serif" font-size="19" font-weight="900" fill="#FF3366">Id</text>
+        </svg>
+      </div>
+      <div class="tool-name">InDesign</div>
+      <div class="tool-sub">Print & publication</div>
+    </div>
+
+    <!-- Premiere Pro -->
+    <div class="tool-card">
+      <div class="tool-logo">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <rect width="48" height="48" rx="10" fill="#00005B"/>
+          <text x="5" y="34" font-family="Arial Black,sans-serif" font-size="19" font-weight="900" fill="#9999FF">Pr</text>
+        </svg>
+      </div>
+      <div class="tool-name">Premiere Pro</div>
+      <div class="tool-sub">Video editing</div>
+    </div>
+
+    <!-- Dreamweaver -->
+    <div class="tool-card">
+      <div class="tool-logo">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <rect width="48" height="48" rx="10" fill="#072535"/>
+          <text x="4" y="34" font-family="Arial Black,sans-serif" font-size="18" font-weight="900" fill="#35FA00">Dw</text>
+        </svg>
+      </div>
+      <div class="tool-name">Dreamweaver</div>
+      <div class="tool-sub">Web & mailers</div>
+    </div>
+
+  </div>
+
+  <div class="sec-hdr" style="margin-top:32px;margin-bottom:20px;"><span class="sec-num" style="font-size:11px;color:var(--ink-light);">Web & Dev</span><div class="sec-line"></div></div>
+
+  <div class="web-row">
+    <div class="web-chip">
+      <div class="web-chip-icon" style="background:#FFF0E0;">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M2 2l1.5 13L9 17l5.5-2L16 2H2z" fill="#E44D26" opacity=".9"/>
+          <path d="M9 15.5l4.2-1.5 1.2-10.5H9v12z" fill="#F16529"/>
+          <path d="M9 8.5H6.8l-.15-1.7H9V5.1H4.9l.4 4.6H9V8.5zM9 12.1l-.01.003-2.2-.6-.14-1.6H4.96l.27 3.1L9 14.12V12.1z" fill="white"/>
+        </svg>
+      </div>
+      <div><div class="web-chip-name">HTML5</div><div class="web-chip-sub">Markup & structure</div></div>
+    </div>
+    <div class="web-chip">
+      <div class="web-chip-icon" style="background:#E8F4FF;">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M2 2l1.5 13L9 17l5.5-2L16 2H2z" fill="#264DE4" opacity=".9"/>
+          <path d="M9 15.5l4.2-1.5 1.2-10.5H9v12z" fill="#2965F1"/>
+          <path d="M9 8.5h2.2l.2-2H9V4.9h4.1l-.4 4.6H9V8.5zM9 12l.01.003 2.2-.6.14-1.5h1.68l-.28 3.1L9 14.12V12z" fill="white"/>
+        </svg>
+      </div>
+      <div><div class="web-chip-name">CSS3</div><div class="web-chip-sub">Styling & layouts</div></div>
+    </div>
+    <div class="web-chip">
+      <div class="web-chip-icon" style="background:#F0F8F0;">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M9 1.5C4.86 1.5 1.5 4.86 1.5 9s3.36 7.5 7.5 7.5 7.5-3.36 7.5-7.5S13.14 1.5 9 1.5z" fill="#21759B"/>
+          <path d="M9 1.5c-1.5 0-3 3.36-3 7.5s1.5 7.5 3 7.5 3-3.36 3-7.5-1.5-7.5-3-7.5z" fill="#21759B" opacity=".5"/>
+          <path d="M1.5 9h15M9 1.5a11.5 11.5 0 010 15" stroke="white" stroke-width="1" fill="none"/>
+        </svg>
+      </div>
+      <div><div class="web-chip-name">WordPress</div><div class="web-chip-sub">Site management</div></div>
+    </div>
+    <div class="web-chip">
+      <div class="web-chip-icon" style="background:#FFF5F0;">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <rect x="2" y="3" width="14" height="12" rx="2" fill="#C8923A" opacity=".15" stroke="#C8923A" stroke-width="1.2"/>
+          <path d="M2 6h14" stroke="#C8923A" stroke-width="1"/>
+          <path d="M5 9h8M5 12h5" stroke="#C8923A" stroke-width="1" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div><div class="web-chip-name">HTML Emailers</div><div class="web-chip-sub">Responsive mailers</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div class="sec">
+  <div class="sec-hdr"><span class="sec-num">02</span><span class="sec-title">Experience</span><div class="sec-line"></div></div>
+
+  <div class="exp-item">
     <div>
-      <div class="hero-eyebrow">
-        <div class="hero-dot"></div>
-        <span>Available for opportunities</span>
-      </div>
-      <div class="hero-name">Vikram<br>Chauhan</div>
-      <p class="hero-tagline">Graphic Designer & Web Developer crafting premium brands, digital experiences, and event visuals for 10+ years. Based in Gurugram.</p>
-      <div class="hero-tags">
-        <span class="hero-tag">Graphic Design</span>
-        <span class="hero-tag">Web Development</span>
-        <span class="hero-tag">Event Branding</span>
-        <span class="hero-tag">HTML Emailers</span>
-        <span class="hero-tag">Video Editing</span>
-      </div>
+      <div class="exp-period">2022 — Present</div>
+      <div class="exp-company">ESG Research Foundation</div>
+      <span class="exp-badge">Current role</span>
     </div>
-    <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-num">10+</div>
-        <div class="stat-label">Years experience</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">3</div>
-        <div class="stat-label">Major award events</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">5</div>
-        <div class="stat-label">Companies worked</div>
+    <div>
+      <div class="exp-role">Graphics & Web Developer</div>
+      <p class="exp-desc">End-to-end visual and digital ownership — social media creatives, webinar video editing, website management, and complete branding for three major award events. Worked with national leaders and international guests across New Delhi and Dubai stages.</p>
+      <div class="chips">
+        <span class="chip">Event backdrops</span><span class="chip">Standees & banners</span><span class="chip">HTML emailers</span><span class="chip">Video editing</span><span class="chip">Social media</span><span class="chip">Website management</span>
       </div>
     </div>
   </div>
 
-  <!-- SKILLS -->
-  <div class="section">
-    <div class="section-header">
-      <span class="section-num">01</span>
-      <span class="section-title">Expertise</span>
-      <div class="section-line"></div>
+  <div class="exp-item">
+    <div>
+      <div class="exp-period">2017 — 2022</div>
+      <div class="exp-company">Apra & Associates LLP</div>
     </div>
-    <div class="skills-grid">
-
-      <div class="skill-cell">
-        <div class="skill-icon" style="background:#FFF0E8;">
-          <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="8" height="8" rx="2" fill="#C8923A"/><rect x="13" y="3" width="8" height="8" rx="2" fill="#C8923A" opacity="0.4"/><rect x="3" y="13" width="8" height="8" rx="2" fill="#C8923A" opacity="0.4"/><circle cx="17" cy="17" r="4" fill="#C8923A" opacity="0.6"/></svg>
-        </div>
-        <div><div class="skill-name">Adobe Illustrator</div><div class="skill-sub">Vector & logo design</div></div>
-      </div>
-
-      <div class="skill-cell">
-        <div class="skill-icon" style="background:#EAF0FF;">
-          <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="3" fill="#5C7ABA" opacity="0.2"/><rect x="4" y="4" width="16" height="16" rx="3" stroke="#5C7ABA" stroke-width="1.5"/><circle cx="9" cy="9" r="2.5" fill="#5C7ABA"/><path d="M4 16L9 11L13 14L17 9L20 12" stroke="#5C7ABA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div><div class="skill-name">Photoshop</div><div class="skill-sub">Photo editing & composites</div></div>
-      </div>
-
-      <div class="skill-cell">
-        <div class="skill-icon" style="background:#F0F8F0;">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h10M4 18h7" stroke="#5C7A5A" stroke-width="2" stroke-linecap="round"/><rect x="15" y="14" width="6" height="6" rx="1.5" fill="#5C7A5A" opacity="0.3"/><rect x="16.5" y="15.5" width="3" height="3" rx="0.5" fill="#5C7A5A"/></svg>
-        </div>
-        <div><div class="skill-name">InDesign</div><div class="skill-sub">Print & publication</div></div>
-      </div>
-
-      <div class="skill-cell">
-        <div class="skill-icon" style="background:#FFF5F0;">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L4 7v5c0 4.4 3.4 8.5 8 9.5 4.6-1 8-5.1 8-9.5V7l-8-5z" fill="#B85C38" opacity="0.15" stroke="#B85C38" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="#B85C38" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div><div class="skill-name">WordPress</div><div class="skill-sub">Website management</div></div>
-      </div>
-
-      <div class="skill-cell">
-        <div class="skill-icon" style="background:#FFF8EC;">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M9 18V6l-5 3" stroke="#C8923A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="10" y="8" width="11" height="8" rx="2" fill="#C8923A" opacity="0.15" stroke="#C8923A" stroke-width="1.5"/><path d="M13 12h5" stroke="#C8923A" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </div>
-        <div><div class="skill-name">Premiere Pro</div><div class="skill-sub">Video editing & reels</div></div>
-      </div>
-
-      <div class="skill-cell">
-        <div class="skill-icon" style="background:#F0EAF8;">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16" stroke="#7A5CB8" stroke-width="1.5" stroke-linecap="round"/><path d="M8 6V4h8v2" stroke="#7A5CB8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="4" y="8" width="16" height="12" rx="2" fill="#7A5CB8" opacity="0.1" stroke="#7A5CB8" stroke-width="1.5"/><path d="M9 13h6M11 10h2M10 16h4" stroke="#7A5CB8" stroke-width="1" stroke-linecap="round"/></svg>
-        </div>
-        <div><div class="skill-name">HTML Emailers</div><div class="skill-sub">Responsive email design</div></div>
-      </div>
-
-      <div class="skill-cell">
-        <div class="skill-icon" style="background:#FFF0E8;">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M4 8l4-4h8l4 4v8l-4 4H8l-4-4V8z" fill="#C8923A" opacity="0.1" stroke="#C8923A" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 12h6M12 9v6" stroke="#C8923A" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </div>
-        <div><div class="skill-name">HTML / CSS</div><div class="skill-sub">Frontend development</div></div>
-      </div>
-
-      <div class="skill-cell">
-        <div class="skill-icon" style="background:#EAF5EF;">
-          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" fill="#5C7A5A" opacity="0.1" stroke="#5C7A5A" stroke-width="1.5"/><path d="M12 4c-2 3-2 5 0 8s2 5 0 8" stroke="#5C7A5A" stroke-width="1.2" stroke-linecap="round"/><path d="M4 12h16" stroke="#5C7A5A" stroke-width="1.2" stroke-linecap="round"/></svg>
-        </div>
-        <div><div class="skill-name">Dreamweaver</div><div class="skill-sub">Web & mailer design</div></div>
-      </div>
-
-      <div class="skill-cell">
-        <div class="skill-icon" style="background:#EDF0FF;">
-          <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" fill="#3D5CB8" opacity="0.1" stroke="#3D5CB8" stroke-width="1.5"/><path d="M3 9h18" stroke="#3D5CB8" stroke-width="1.2"/><circle cx="7" cy="7" r="1" fill="#3D5CB8"/><circle cx="10" cy="7" r="1" fill="#3D5CB8" opacity="0.5"/></svg>
-        </div>
-        <div><div class="skill-name">Branding & Identity</div><div class="skill-sub">Presentations & UI support</div></div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- EXPERIENCE -->
-  <div class="section">
-    <div class="section-header">
-      <span class="section-num">02</span>
-      <span class="section-title">Experience</span>
-      <div class="section-line"></div>
-    </div>
-    <div class="exp-list">
-
-      <div class="exp-item">
-        <div class="exp-meta">
-          <div class="exp-period">2022 — Present</div>
-          <div class="exp-company">ESG Research Foundation</div>
-          <span class="exp-badge">Current</span>
-        </div>
-        <div>
-          <div class="exp-role">Graphics & Web Developer</div>
-          <p class="exp-desc">Leading all visual and digital work — social media creatives, webinar video editing, website management, and complete event branding. Handled three major national and international award shows including the Prithvi Awards (New Delhi) and Sustainability Global Change Makers Awards (Dubai).</p>
-          <div class="exp-highlights">
-            <span class="exp-chip">Event backdrops</span>
-            <span class="exp-chip">Standees & banners</span>
-            <span class="exp-chip">HTML emailers</span>
-            <span class="exp-chip">Video editing</span>
-            <span class="exp-chip">Social media</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-meta">
-          <div class="exp-period">2017 — 2022</div>
-          <div class="exp-company">Apra & Associates LLP</div>
-        </div>
-        <div>
-          <div class="exp-role">Graphics & Web Developer</div>
-          <p class="exp-desc">Handled branding, graphic design, video editing, book cover design, YouTube channel management, website banners, HTML emailers, and Outlook setup alongside IT coordination for day-to-day operations.</p>
-          <div class="exp-highlights">
-            <span class="exp-chip">Book cover design</span>
-            <span class="exp-chip">YouTube management</span>
-            <span class="exp-chip">Website banners</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-meta">
-          <div class="exp-period">2016 — 2017</div>
-          <div class="exp-company">Genius Network Infotech</div>
-        </div>
-        <div>
-          <div class="exp-role">Junior Web Developer & Graphics Designer</div>
-          <p class="exp-desc">Graphic design, branding, presentations, UI support, and website management for a fast-paced digital agency.</p>
-        </div>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-meta">
-          <div class="exp-period">2015 — 2016</div>
-          <div class="exp-company">Kompanions</div>
-        </div>
-        <div>
-          <div class="exp-role">Junior Web Developer & Graphics Designer</div>
-          <p class="exp-desc">Mailer design, website management, and general IT support.</p>
-        </div>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-meta">
-          <div class="exp-period">2014 — 2015</div>
-          <div class="exp-company">XLNC Teams</div>
-        </div>
-        <div>
-          <div class="exp-role">Junior Web Developer</div>
-          <p class="exp-desc">Web designing — the start of a decade-long design journey.</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- AWARD EVENTS -->
-  <div class="section">
-    <div class="section-header">
-      <span class="section-num">03</span>
-      <span class="section-title">Notable Events</span>
-      <div class="section-line"></div>
-    </div>
-    <div class="awards-row">
-      <div class="award-card">
-        <div class="award-icon-row">
-          <div class="award-icon">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 4.8 5.6.8-4 3.9.9 5.5L12 14.5l-4.9 2.5.9-5.5-4-3.9 5.6-.8L12 2z" fill="white" stroke="white" stroke-width="1" stroke-linejoin="round"/></svg>
-          </div>
-          <div>
-            <div class="award-title">Prithvi Awards</div>
-            <div class="award-location">New Delhi, India</div>
-          </div>
-        </div>
-        <p class="award-desc">Full event branding — backdrops, standees, video production, ads, and digital creatives. Chief guest: Vivek Oberoi. Attended by Shri Arjun Ram Meghwal & Shri Suresh Prabhu.</p>
-      </div>
-      <div class="award-card">
-        <div class="award-icon-row">
-          <div class="award-icon">
-            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="white" stroke="white" stroke-width="1"/><path d="M6 20v-2a6 6 0 0112 0v2" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M16 4l2-2M8 4L6 2" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
-          </div>
-          <div>
-            <div class="award-title">Sustainability Global Change Makers</div>
-            <div class="award-location">Dubai, UAE</div>
-          </div>
-        </div>
-        <p class="award-desc">International award ceremony — complete visual identity, print & digital collateral, banner design, event videos, and HTML marketing emailers for a global audience.</p>
+    <div>
+      <div class="exp-role">Graphics & Web Developer</div>
+      <p class="exp-desc">Branding, video editing, book cover design, YouTube channel management, website banners, HTML emailers, and Outlook setup — full creative and IT ownership across 5 years.</p>
+      <div class="chips">
+        <span class="chip">Book covers</span><span class="chip">YouTube</span><span class="chip">Branding</span><span class="chip">IT support</span>
       </div>
     </div>
   </div>
 
-  <!-- PROJECTS -->
-  <div class="section">
-    <div class="section-header">
-      <span class="section-num">04</span>
-      <span class="section-title">Live Projects</span>
-      <div class="section-line"></div>
+  <div class="exp-item">
+    <div>
+      <div class="exp-period">2016 — 2017</div>
+      <div class="exp-company">Genius Network Infotech</div>
     </div>
-    <div class="projects-grid">
-      <div class="project-card" onclick="window.open('https://esg-platform-delta.vercel.app','_blank')">
-        <div class="project-accent" style="background: linear-gradient(90deg, #5C7A5A, #7AAB78);"></div>
-        <div class="project-type">Web Platform</div>
-        <div class="project-name">ESG Platform</div>
-        <p class="project-desc">AI-assisted ESG web platform with premium responsive UI, dynamic content sections, news modules, and awards pages.</p>
-        <div class="project-tags">
-          <span class="project-tag">Responsive build</span>
-          <span class="project-tag">Dynamic UI</span>
-          <span class="project-tag">Vercel</span>
-        </div>
-      </div>
-      <div class="project-card" onclick="window.open('https://www.urbangym.in','_blank')">
-        <div class="project-accent" style="background: linear-gradient(90deg, #C8923A, #E8B56A);"></div>
-        <div class="project-type">SaaS Product</div>
-        <div class="project-name">UrbanGym</div>
-        <p class="project-desc">Gym management SaaS with authentication, dashboards, role-based workflows, and API health monitoring.</p>
-        <div class="project-tags">
-          <span class="project-tag">Auth system</span>
-          <span class="project-tag">Dashboard UX</span>
-          <span class="project-tag">Live app</span>
-        </div>
-      </div>
-      <div class="project-card" onclick="window.open('https://gst-pilot-ai.vercel.app','_blank')">
-        <div class="project-accent" style="background: linear-gradient(90deg, #7A5CB8, #9E84D4);"></div>
-        <div class="project-type">AI Tool</div>
-        <div class="project-name">GSTPilot AI</div>
-        <p class="project-desc">AI-powered GST assistant with OAuth, mobile-optimized dashboard, and practical business utility focus.</p>
-        <div class="project-tags">
-          <span class="project-tag">AI workflow</span>
-          <span class="project-tag">Mobile ready</span>
-          <span class="project-tag">OAuth</span>
-        </div>
-      </div>
-      <div class="project-card" style="background: var(--warm); border-style: dashed; cursor: default;">
-        <div class="project-type">Education</div>
-        <div class="project-name">BCA (Hons)</div>
-        <p class="project-desc">Lovely Professional University, 2008–2013. Database management, networking, data structures, core programming, and Adobe Illustrator.</p>
-        <div class="project-tags">
-          <span class="project-tag">Networking</span>
-          <span class="project-tag">Programming</span>
-          <span class="project-tag">Adobe Ai</span>
-        </div>
-      </div>
+    <div>
+      <div class="exp-role">Junior Web Developer & Graphics Designer</div>
+      <p class="exp-desc">Graphic design, branding, presentations, UI support, and website management for a digital agency environment.</p>
     </div>
   </div>
 
-  <!-- CONTACT -->
-  <div class="section">
-    <div class="section-header">
-      <span class="section-num">05</span>
-      <span class="section-title">Get in touch</span>
-      <div class="section-line"></div>
+  <div class="exp-item">
+    <div>
+      <div class="exp-period">2015 — 2016</div>
+      <div class="exp-company">Kompanions</div>
     </div>
-    <div class="contact-grid">
-      <div class="contact-item">
-        <div class="contact-icon" style="background:#FFF0E8;">
-          <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><rect x="3" y="5" width="18" height="14" rx="2" fill="#C8923A" opacity="0.15" stroke="#C8923A" stroke-width="1.5"/><path d="M3 7l9 7 9-7" stroke="#C8923A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div><div class="contact-label">Email</div><div class="contact-value">vikramarun855@gmail.com</div></div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon" style="background:#EAF5EF;">
-          <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 014 6a2 2 0 012-2z" fill="#5C7A5A" opacity="0.15" stroke="#5C7A5A" stroke-width="1.5" stroke-linejoin="round"/></svg>
-        </div>
-        <div><div class="contact-label">Phone</div><div class="contact-value">+91 98101 94597</div></div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon" style="background:#EDF0FF;">
-          <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" fill="#3D5CB8" opacity="0.15" stroke="#3D5CB8" stroke-width="1.5" stroke-linejoin="round"/><rect x="2" y="9" width="4" height="12" fill="#3D5CB8" opacity="0.15" stroke="#3D5CB8" stroke-width="1.5" rx="1"/><circle cx="4" cy="4" r="2" fill="#3D5CB8" opacity="0.15" stroke="#3D5CB8" stroke-width="1.5"/></svg>
-        </div>
-        <div><div class="contact-label">LinkedIn</div><div class="contact-value">linkedin.com/in/phariboi</div></div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon" style="background:#FFF5F0;">
-          <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><rect x="2" y="2" width="20" height="20" rx="6" fill="#B85C38" opacity="0.12" stroke="#B85C38" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="#B85C38" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="#B85C38"/></svg>
-        </div>
-        <div><div class="contact-label">Instagram</div><div class="contact-value">instagram.com/pahariboi</div></div>
-      </div>
+    <div>
+      <div class="exp-role">Junior Web Developer & Graphics Designer</div>
+      <p class="exp-desc">Mailer design, website management, and IT support.</p>
     </div>
   </div>
 
-  <!-- FOOTER -->
-  <div class="footer">
-    <div class="footer-name">Vikram Chauhan</div>
-    <div class="footer-copy">Gurugram, Haryana · Open to work</div>
+  <div class="exp-item">
+    <div>
+      <div class="exp-period">2014 — 2015</div>
+      <div class="exp-company">XLNC Teams</div>
+    </div>
+    <div>
+      <div class="exp-role">Junior Web Developer</div>
+      <p class="exp-desc">Web designing — the beginning of a 10-year design career.</p>
+    </div>
   </div>
+</div>
+
+<!-- AWARD EVENTS -->
+<div class="sec">
+  <div class="sec-hdr"><span class="sec-num">03</span><span class="sec-title">Notable Events</span><div class="sec-line"></div></div>
+  <div class="awards-grid">
+    <div class="award-card">
+      <div class="award-top">
+        <div class="award-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l2 4 4.5.7-3.3 3.2.8 4.5L10 12.2l-4 2.2.8-4.5L3.5 6.7 8 6z" fill="white" stroke="white" stroke-width=".8" stroke-linejoin="round"/></svg>
+        </div>
+        <div><div class="award-title">Prithvi Awards</div><div class="award-loc">New Delhi, India</div></div>
+      </div>
+      <p class="award-desc">Full event branding — backdrops, standees, videos, ads & digital creatives. Attended by Shri Arjun Ram Meghwal, Shri Suresh Prabhu. Chief Guest: Vivek Oberoi.</p>
+    </div>
+    <div class="award-card">
+      <div class="award-top">
+        <div class="award-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="white" stroke-width="1.5"/><path d="M10 3c-2 2.5-2 4 0 7s2 4.5 0 7" stroke="white" stroke-width="1" fill="none"/><path d="M3 10h14" stroke="white" stroke-width="1"/></svg>
+        </div>
+        <div><div class="award-title">Sustainability Global Change Makers</div><div class="award-loc">Dubai, UAE</div></div>
+      </div>
+      <p class="award-desc">International award ceremony — complete visual identity, print & digital collateral, banner design, event videos, and HTML marketing emailers for a global audience.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<div class="sec">
+  <div class="sec-hdr"><span class="sec-num">04</span><span class="sec-title">Live Projects</span><div class="sec-line"></div></div>
+  <div class="proj-grid">
+
+    <div class="proj-card" onclick="window.open('https://esg-platform-delta.vercel.app','_blank')">
+      <div class="proj-top" style="background:linear-gradient(90deg,#5C7A5A,#7AAB78);"></div>
+      <div class="proj-body">
+        <div class="proj-meta"><span class="proj-type">Web Platform</span><span class="ai-badge">AI-assisted</span></div>
+        <div class="proj-name">ESG Platform</div>
+        <p class="proj-desc">ESG web platform — dynamic content sections, news modules, awards pages, responsive UI. Built with AI-assisted development workflow.</p>
+        <div class="proj-tags"><span class="proj-tag">Responsive UI</span><span class="proj-tag">Content design</span><span class="proj-tag">Vercel</span></div>
+      </div>
+    </div>
+
+    <div class="proj-card" onclick="window.open('https://www.urbangym.in','_blank')">
+      <div class="proj-top" style="background:linear-gradient(90deg,#C8923A,#E8B56A);"></div>
+      <div class="proj-body">
+        <div class="proj-meta"><span class="proj-type">SaaS Product</span><span class="ai-badge">AI-assisted</span></div>
+        <div class="proj-name">UrbanGym</div>
+        <p class="proj-desc">Gym management SaaS with authentication, dashboards, role-based workflows, and API health monitoring. AI-assisted build.</p>
+        <div class="proj-tags"><span class="proj-tag">Dashboard UX</span><span class="proj-tag">Auth system</span><span class="proj-tag">Live app</span></div>
+      </div>
+    </div>
+
+    <div class="proj-card" onclick="window.open('https://gst-pilot-ai.vercel.app','_blank')">
+      <div class="proj-top" style="background:linear-gradient(90deg,#7A5CB8,#9E84D4);"></div>
+      <div class="proj-body">
+        <div class="proj-meta"><span class="proj-type">AI Tool</span><span class="ai-badge">AI-assisted</span></div>
+        <div class="proj-name">GSTPilot AI</div>
+        <p class="proj-desc">GST assistant with OAuth, mobile-optimized dashboard, and practical business utility. AI-assisted development workflow.</p>
+        <div class="proj-tags"><span class="proj-tag">AI workflow</span><span class="proj-tag">Mobile ready</span><span class="proj-tag">OAuth</span></div>
+      </div>
+    </div>
+
+    <div class="proj-card" style="background:var(--warm);border-style:dashed;cursor:default;">
+      <div class="proj-top" style="background:var(--gold-light);"></div>
+      <div class="proj-body">
+        <div class="proj-meta"><span class="proj-type">Education</span></div>
+        <div class="proj-name">BCA (Hons)</div>
+        <p class="proj-desc">Lovely Professional University, 2008–2013. Database management, networking, data structures, programming, Adobe Illustrator.</p>
+        <div class="proj-tags"><span class="proj-tag">Networking</span><span class="proj-tag">Programming</span><span class="proj-tag">Adobe Ai</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="sec">
+  <div class="sec-hdr"><span class="sec-num">05</span><span class="sec-title">Get in touch</span><div class="sec-line"></div></div>
+  <div class="contact-grid">
+    <div class="contact-item">
+      <div class="c-icon" style="background:#FFF0E8;">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="4" width="14" height="10" rx="2" fill="#C8923A" opacity=".15" stroke="#C8923A" stroke-width="1.3"/><path d="M2 6l7 5 7-5" stroke="#C8923A" stroke-width="1.3" stroke-linecap="round"/></svg>
+      </div>
+      <div><div class="c-label">Email</div><div class="c-value">vikramarun855@gmail.com</div></div>
+    </div>
+    <div class="contact-item">
+      <div class="c-icon" style="background:#EAF5EF;">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 3h3l1.5 4-2 1.2a9 9 0 003.3 3.3L11 9.5l4 1.5V14a1.5 1.5 0 01-1.5 1.5A13.5 13.5 0 012.5 4.5 1.5 1.5 0 014 3z" fill="#5C7A5A" opacity=".15" stroke="#5C7A5A" stroke-width="1.3" stroke-linejoin="round"/></svg>
+      </div>
+      <div><div class="c-label">Phone</div><div class="c-value">+91 98101 94597</div></div>
+    </div>
+    <div class="contact-item">
+      <div class="c-icon" style="background:#EDF0FF;">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M12 6a3 3 0 013 3v5h-3v-5a1.5 1.5 0 00-3 0v5H6v-5a3 3 0 013-3z" fill="#3D5CB8" opacity=".15" stroke="#3D5CB8" stroke-width="1.3" stroke-linejoin="round"/><rect x="2" y="7" width="3" height="7" fill="#3D5CB8" opacity=".15" stroke="#3D5CB8" stroke-width="1.3" rx=".5"/><circle cx="3.5" cy="4" r="1.5" fill="#3D5CB8" opacity=".15" stroke="#3D5CB8" stroke-width="1.3"/></svg>
+      </div>
+      <div><div class="c-label">LinkedIn</div><div class="c-value">linkedin.com/in/phariboi</div></div>
+    </div>
+    <div class="contact-item">
+      <div class="c-icon" style="background:#FFF5F0;">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="5" fill="#B85C38" opacity=".12" stroke="#B85C38" stroke-width="1.3"/><circle cx="9" cy="9" r="3" stroke="#B85C38" stroke-width="1.3"/><circle cx="13" cy="5" r="1" fill="#B85C38"/></svg>
+      </div>
+      <div><div class="c-label">Instagram</div><div class="c-value">instagram.com/pahariboi</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-name">Vikram Chauhan</div>
+  <div class="footer-copy">Gurugram, Haryana · Graphic Designer & Web Developer</div>
+</div>
 
 </div>
