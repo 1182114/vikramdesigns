@@ -1,0 +1,379 @@
+// Sass Document
+
+import { motion } from "framer-motion";
+// Removed lucide-react icons to fix CDN/build issue
+const Icon = ({ children }) => <span className="inline-flex items-center">{children}</span>;
+
+export default function PortfolioWebsite() {
+  const projects = [
+    {
+      title: "ESG Platform",
+      live: "https://esg-platform-delta.vercel.app",
+      github: "https://github.com/1182114/esg-platform",
+      category: "Web Platform",
+      description:
+        "AI-assisted ESG web platform with dynamic content sections, news modules, awards pages, and a premium responsive interface.",
+      highlights: ["Dynamic UI", "Content-driven pages", "Responsive build", "Vercel deployment"],
+    },
+    {
+      title: "UrbanGym",
+      live: "https://www.urbangym.in",
+      github: "https://github.com/1182114/urban-gym",
+      category: "SaaS Product",
+      description:
+        "Modern gym management SaaS with authentication, dashboards, APIs, role-based workflows, and production-ready debugging.",
+      highlights: ["Auth system", "Dashboard UX", "API health checks", "Live production app"],
+    },
+    {
+      title: "GSTPilot AI",
+      live: "https://gst-pilot-ai.vercel.app",
+      github: "https://github.com/1182114/GSTPilot-AI",
+      category: "AI Tool",
+      description:
+        "AI-powered GST assistant tool with secure login, OAuth setup, mobile-optimized dashboard, and real business use-case focus.",
+      highlights: ["AI workflow", "OAuth", "Mobile optimization", "Professional utility"],
+    },
+  ];
+
+  const skills = [
+    "Graphic Design",
+    "Branding",
+    "Social Media Creatives",
+    "HTML/CSS",
+    "Landing Pages",
+    "WordPress",
+    "Video Editing",
+    "Presentation Design",
+    "HTML Emailers",
+    "Website Management",
+    "AI-assisted Development",
+    "UI Support",
+  ];
+
+  const experience = [
+    {
+      company: "ESG Research Foundation",
+      role: "Graphics & Web Developer",
+      duration: "2022 — Present",
+      points: [
+        "Designed event branding, digital creatives, social posts, banners, standees, and HTML emailers.",
+        "Edited webinar videos and supported the website and digital brand presence across campaigns.",
+        "Contributed to premium visual storytelling for large public-facing initiatives and events.",
+      ],
+    },
+    {
+      company: "Apra & Associates LLP",
+      role: "Graphics & Web Developer",
+      duration: "2017 — 2022",
+      points: [
+        "Handled branding, website banners, presentations, book covers, emailers, and marketing designs.",
+        "Supported website management and day-to-day design operations with technical coordination.",
+      ],
+    },
+    {
+      company: "Genius Network Infotech",
+      role: "Junior Web Developer & Graphics Designer",
+      duration: "2016 — 2017",
+      points: [
+        "Worked on UI support, web design tasks, and graphic assets for business communication.",
+      ],
+    },
+  ];
+
+  const fadeUp = {
+    hidden: { opacity: 0, y: 24 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  return (
+    <div className="min-h-screen bg-[#060816] text-white selection:bg-emerald-300 selection:text-black">
+      <div className="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,rgba(16,185,129,0.14),transparent_24%),radial-gradient(circle_at_top_right,rgba(59,130,246,0.14),transparent_28%),radial-gradient(circle_at_bottom,rgba(168,85,247,0.12),transparent_24%)]" />
+
+      <section className="relative overflow-hidden">
+        <div className="mx-auto max-w-7xl px-6 py-8 md:px-10 lg:px-16">
+          <div className="flex items-center justify-between rounded-full border border-white/10 bg-white/5 px-5 py-3 backdrop-blur-xl">
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-emerald-400 to-cyan-400 text-sm font-bold text-black">
+                VC
+              </div>
+              <div>
+                <div className="text-sm font-semibold">Vikram Chauhan</div>
+                <div className="text-xs text-white/60">Designer • Developer • AI Builder</div>
+              </div>
+            </div>
+            <a
+              href="#contact"
+              className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-4 py-2 text-sm font-medium text-emerald-300 transition hover:bg-emerald-400/20"
+            >
+              Let’s Connect
+            </a>
+          </div>
+        </div>
+
+        <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 pb-20 pt-10 md:px-10 lg:grid-cols-[1.15fr_0.85fr] lg:px-16 lg:pb-28 lg:pt-16">
+          <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-emerald-300 backdrop-blur-xl">
+              ✨
+              Premium Portfolio
+            </div>
+            <h1 className="max-w-4xl text-4xl font-semibold leading-tight sm:text-5xl lg:text-7xl lg:leading-[1.05]">
+              I create <span className="bg-gradient-to-r from-emerald-300 via-cyan-300 to-violet-300 bg-clip-text text-transparent">brands, websites, and digital experiences</span> that feel modern and memorable.
+            </h1>
+            <p className="mt-6 max-w-3xl text-base leading-8 text-white/70 sm:text-lg">
+              I’m Vikram Chauhan — a Graphic Designer & Web Developer with 10+ years of experience in creative branding,
+              event design, website management, HTML emailers, video editing, and AI-assisted web product building.
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-4">
+              <a
+                href="#projects"
+                className="inline-flex items-center gap-2 rounded-2xl bg-white px-6 py-3 text-sm font-semibold text-black transition hover:scale-[1.02]"
+              >
+                View Projects
+                →
+              </a>
+              <a
+                href="https://github.com/1182114"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+              >
+                🐙
+                GitHub Profile
+              </a>
+            </div>
+
+            <div className="mt-10 grid gap-4 sm:grid-cols-3">
+              {[
+                ["10+", "Years of Experience"],
+                ["3", "Live Products"],
+                ["100+", "Creative Deliverables"],
+              ].map(([value, label]) => (
+                <div key={label} className="rounded-3xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl">
+                  <div className="text-3xl font-semibold">{value}</div>
+                  <div className="mt-1 text-sm text-white/60">{label}</div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="relative"
+          >
+            <div className="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-emerald-400/10 via-cyan-400/10 to-violet-400/10 blur-2xl" />
+            <div className="relative rounded-[2rem] border border-white/10 bg-white/6 p-6 backdrop-blur-2xl">
+              <div className="rounded-[1.75rem] border border-white/10 bg-[#0b1023] p-7">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="text-sm text-emerald-300">About</div>
+                    <div className="mt-1 text-2xl font-semibold">Design meets execution</div>
+                  </div>
+                  <div className="rounded-2xl border border-white/10 bg-white/5 p-3">
+                    📦
+                  </div>
+                </div>
+                <p className="mt-5 text-sm leading-7 text-white/70">
+                  I have worked on social media creatives, event branding, banners, standees, emailers, presentations,
+                  websites, and AI-supported platforms. My work blends visual quality with practical digital execution.
+                </p>
+                <div className="mt-6 grid grid-cols-2 gap-4">
+                  <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                    <div className="text-xs uppercase tracking-[0.2em] text-white/40">Focus</div>
+                    <div className="mt-2 text-sm font-medium">Branding + Web</div>
+                  </div>
+                  <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                    <div className="text-xs uppercase tracking-[0.2em] text-white/40">Style</div>
+                    <div className="mt-2 text-sm font-medium">Premium + Modern</div>
+                  </div>
+                  <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                    <div className="text-xs uppercase tracking-[0.2em] text-white/40">Strength</div>
+                    <div className="mt-2 text-sm font-medium">Creative Systems</div>
+                  </div>
+                  <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                    <div className="text-xs uppercase tracking-[0.2em] text-white/40">Now Building</div>
+                    <div className="mt-2 text-sm font-medium">AI-assisted Products</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-8 md:px-10 lg:px-16" id="projects">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ duration: 0.6 }}>
+          <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <div className="text-sm uppercase tracking-[0.32em] text-emerald-300">Selected Work</div>
+              <h2 className="mt-3 text-3xl font-semibold sm:text-4xl">Featured Live Projects</h2>
+            </div>
+            <div className="text-sm text-white/55">Crafted with design thinking, development, and AI assistance.</div>
+          </div>
+        </motion.div>
+
+        <div className="grid gap-6 lg:grid-cols-3">
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.title}
+              initial={{ opacity: 0, y: 22 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.55, delay: index * 0.08 }}
+              className="group rounded-[2rem] border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition hover:-translate-y-1 hover:border-emerald-300/30 hover:bg-white/[0.08]"
+            >
+              <div className="flex items-center justify-between gap-3">
+                <span className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-xs uppercase tracking-[0.18em] text-emerald-300">
+                  {project.category}
+                </span>
+                <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/60">0{index + 1}</div>
+              </div>
+              <h3 className="mt-5 text-2xl font-semibold">{project.title}</h3>
+              <p className="mt-4 text-sm leading-7 text-white/68">{project.description}</p>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {project.highlights.map((item) => (
+                  <span key={item} className="rounded-full border border-white/10 bg-black/20 px-3 py-1 text-xs text-white/65">
+                    {item}
+                  </span>
+                ))}
+              </div>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a
+                  href={project.live}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-black"
+                >
+                  Visit Site
+                  ↗
+                </a>
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-semibold text-white"
+                >
+                  🐙
+                  GitHub
+                </a>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-20 md:px-10 lg:px-16">
+        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ duration: 0.6 }}>
+            <div className="text-sm uppercase tracking-[0.32em] text-emerald-300">Capabilities</div>
+            <h2 className="mt-3 text-3xl font-semibold sm:text-4xl">Skills & Expertise</h2>
+            <p className="mt-5 max-w-xl text-sm leading-7 text-white/68 sm:text-base">
+              My strength lies in combining visual creativity with web execution. I work across digital design, brand assets,
+              product presentation, and AI-assisted website development.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+            {skills.map((skill, index) => (
+              <motion.div
+                key={skill}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.03 }}
+                className="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-sm text-white/80 backdrop-blur-xl"
+              >
+                {skill}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-6 md:px-10 lg:px-16">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ duration: 0.6 }}>
+          <div className="text-sm uppercase tracking-[0.32em] text-emerald-300">Experience</div>
+          <h2 className="mt-3 text-3xl font-semibold sm:text-4xl">Professional Journey</h2>
+        </motion.div>
+
+        <div className="mt-10 space-y-6">
+          {experience.map((item, index) => (
+            <motion.div
+              key={item.company}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
+              className="rounded-[2rem] border border-white/10 bg-white/5 p-6 backdrop-blur-xl"
+            >
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                <div className="flex items-start gap-4">
+                  <div className="rounded-2xl border border-white/10 bg-white/5 p-3">
+                    💼
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold sm:text-2xl">{item.role}</h3>
+                    <p className="mt-1 text-white/70">{item.company}</p>
+                  </div>
+                </div>
+                <div className="rounded-full border border-white/10 bg-black/20 px-4 py-2 text-sm text-white/60">
+                  {item.duration}
+                </div>
+              </div>
+              <div className="mt-5 space-y-3 text-sm leading-7 text-white/68 sm:text-base">
+                {item.points.map((point) => (
+                  <p key={point}>• {point}</p>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-20 md:px-10 lg:px-16" id="contact">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.65 }}
+          className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur-2xl lg:p-12"
+        >
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.16),transparent_24%),radial-gradient(circle_at_left,rgba(59,130,246,0.14),transparent_22%)]" />
+          <div className="relative grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+            <div>
+              <div className="text-sm uppercase tracking-[0.32em] text-emerald-300">Contact</div>
+              <h2 className="mt-3 text-3xl font-semibold sm:text-4xl">Let’s build something strong together.</h2>
+              <p className="mt-5 max-w-2xl text-sm leading-7 text-white/70 sm:text-base">
+                Available for branding, creative campaigns, website design, portfolio websites, HTML emailers, and AI-assisted product experiences.
+              </p>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <a href="mailto:vikramarun855@gmail.com" className="rounded-2xl border border-white/10 bg-black/20 p-5 transition hover:bg-black/30">
+                ✉️
+                <div className="mt-4 text-sm text-white/50">Email</div>
+                <div className="mt-1 break-all text-sm font-medium text-white">vikramarun855@gmail.com</div>
+              </a>
+              <a href="tel:+919810194597" className="rounded-2xl border border-white/10 bg-black/20 p-5 transition hover:bg-black/30">
+                📞
+                <div className="mt-4 text-sm text-white/50">Phone</div>
+                <div className="mt-1 text-sm font-medium text-white">+91 9810194597</div>
+              </a>
+              <div className="rounded-2xl border border-white/10 bg-black/20 p-5">
+                📍
+                <div className="mt-4 text-sm text-white/50">Location</div>
+                <div className="mt-1 text-sm font-medium text-white">Gurugram, Haryana</div>
+              </div>
+              <a href="https://github.com/1182114" target="_blank" rel="noreferrer" className="rounded-2xl border border-white/10 bg-black/20 p-5 transition hover:bg-black/30">
+                🐙
+                <div className="mt-4 text-sm text-white/50">GitHub</div>
+                <div className="mt-1 text-sm font-medium text-white">github.com/1182114</div>
+              </a>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+    </div>
+  );
+}
